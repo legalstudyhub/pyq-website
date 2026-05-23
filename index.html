@@ -1,374 +1,476 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Legal Study Hub</title>
+<title>Indian Constitutional Law</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-font-family:Arial, sans-serif;
-background:#f4f4f4;
-color:#222;
+    font-family:'Poppins',sans-serif;
+    background:#0F172A;
+    color:white;
+    overflow-x:hidden;
 }
 
-/* HEADER */
+/* NAVBAR */
 
-header{
-background:
-linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
-url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f');
-
-background-size:cover;
-background-position:center;
-color:white;
-text-align:center;
-padding:110px 20px;
+.navbar{
+    width:100%;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    z-index:1000;
+    background:rgba(15,23,42,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(212,175,55,0.2);
 }
 
-header h1{
-font-size:55px;
-margin-bottom:20px;
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#D4AF37;
+    font-family:'Playfair Display',serif;
 }
 
-header p{
-max-width:900px;
-margin:auto;
-line-height:1.8;
-font-size:20px;
+.nav-links{
+    display:flex;
+    gap:30px;
 }
 
-.author{
-margin-top:35px;
-font-size:18px;
-color:#d1d5db;
-line-height:1.8;
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+    position:relative;
+    transition:0.3s;
 }
 
-/* SEARCH BAR */
-
-.search-box{
-text-align:center;
-margin:40px 20px;
+.nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0%;
+    height:2px;
+    background:#D4AF37;
+    transition:0.4s;
 }
 
-.search-box input{
-width:90%;
-max-width:500px;
-padding:15px;
-border:none;
-border-radius:12px;
-font-size:16px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
+.nav-links a:hover::after{
+    width:100%;
 }
 
-/* TITLE */
+.nav-links a:hover{
+    color:#D4AF37;
+}
 
-.title{
-text-align:center;
-font-size:42px;
-margin:40px 0;
-color:#0f172a;
+/* HERO SECTION */
+
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(rgba(15,23,42,0.85),rgba(15,23,42,0.85)),
+    url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1600&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:0 10%;
+}
+
+.hero-content h1{
+    font-size:70px;
+    color:#D4AF37;
+    font-family:'Playfair Display',serif;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    font-size:22px;
+    color:#e2e8f0;
+    max-width:800px;
+    line-height:1.7;
+    margin:auto;
+}
+
+.hero-buttons{
+    margin-top:40px;
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:15px 35px;
+    border:none;
+    border-radius:50px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.4s;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.btn-primary{
+    background:#D4AF37;
+    color:#0F172A;
+}
+
+.btn-primary:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 30px rgba(212,175,55,0.3);
+}
+
+.btn-outline{
+    border:2px solid #D4AF37;
+    color:#D4AF37;
+    background:transparent;
+}
+
+.btn-outline:hover{
+    background:#D4AF37;
+    color:#0F172A;
+}
+
+/* SECTION */
+
+.section{
+    padding:100px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-size:45px;
+    color:#D4AF37;
+    font-family:'Playfair Display',serif;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    color:#cbd5e1;
 }
 
 /* CARDS */
 
-.container{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:25px;
-padding:20px;
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
 }
 
 .card{
-background:white;
-width:320px;
-padding:25px;
-border-radius:18px;
-box-shadow:0 0 15px rgba(0,0,0,0.1);
-transition:0.3s;
+    background:#111827;
+    border:1px solid rgba(212,175,55,0.2);
+    border-radius:20px;
+    padding:35px;
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+    background:#D4AF37;
 }
 
 .card:hover{
-transform:translateY(-10px);
+    transform:translateY(-10px);
+    box-shadow:0 15px 40px rgba(0,0,0,0.4);
 }
 
-.card h2{
-margin-bottom:15px;
-color:#111827;
+.card h3{
+    color:#D4AF37;
+    margin-bottom:15px;
+    font-size:24px;
 }
 
 .card p{
-margin-bottom:20px;
-color:#555;
-line-height:1.6;
+    color:#cbd5e1;
+    line-height:1.7;
 }
 
-.btn{
-display:inline-block;
-background:#2563eb;
-color:white;
-padding:12px 18px;
-border-radius:10px;
-text-decoration:none;
-font-weight:bold;
+/* YEARS */
+
+.year-box{
+    background:#1E293B;
+    padding:30px;
+    border-radius:20px;
+    border-left:5px solid #D4AF37;
+    transition:0.3s;
 }
 
-/* NOTES SECTION */
-
-.notes{
-background:white;
-max-width:1100px;
-margin:50px auto;
-padding:40px;
-border-radius:18px;
-box-shadow:0 0 15px rgba(0,0,0,0.1);
+.year-box:hover{
+    transform:scale(1.03);
 }
 
-.notes h2{
-margin-bottom:20px;
-color:#0f172a;
+.year-box h3{
+    color:#D4AF37;
+    margin-bottom:15px;
 }
 
-.notes ul{
-padding-left:20px;
-line-height:2;
-font-size:17px;
+.year-box ul{
+    list-style:none;
 }
 
-/* ABOUT SECTION */
-
-.about{
-background:white;
-max-width:1100px;
-margin:50px auto;
-padding:40px;
-border-radius:18px;
-box-shadow:0 0 15px rgba(0,0,0,0.1);
-line-height:1.9;
+.year-box ul li{
+    margin:10px 0;
+    color:#e2e8f0;
 }
 
-.about h2{
-margin-bottom:20px;
-color:#0f172a;
+/* QUOTE */
+
+.quote{
+    background:#111827;
+    text-align:center;
+    padding:90px 10%;
 }
 
-/* CONTACT SECTION */
-
-.contact{
-background:#0f172a;
-color:white;
-padding:50px 20px;
-text-align:center;
-margin-top:50px;
-}
-
-.contact h2{
-margin-bottom:20px;
-}
-
-.social-links a{
-display:inline-block;
-margin:10px;
-padding:12px 18px;
-background:white;
-color:#0f172a;
-border-radius:10px;
-text-decoration:none;
-font-weight:bold;
+.quote h2{
+    font-size:40px;
+    color:#D4AF37;
+    font-family:'Playfair Display',serif;
+    line-height:1.6;
 }
 
 /* FOOTER */
 
 footer{
-background:black;
-color:white;
-text-align:center;
-padding:20px;
-font-size:15px;
+    background:#020617;
+    padding:60px 8%;
+    text-align:center;
+    border-top:1px solid rgba(212,175,55,0.2);
+}
+
+footer h3{
+    color:#D4AF37;
+    margin-bottom:10px;
+    font-size:28px;
+}
+
+footer p{
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.hero-content h1{
+    font-size:45px;
+}
+
+.nav-links{
+    display:none;
+}
+
+.section-title h2{
+    font-size:35px;
+}
+
+.quote h2{
+    font-size:28px;
+}
+
 }
 
 </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
+<!-- NAVBAR -->
 
-<header>
+<nav class="navbar">
 
-<h1>LLB Previous Year Questions</h1>
+<div class="logo">⚖ Indian Constitutional Law</div>
+
+<div class="nav-links">
+<a href="#">Home</a>
+<a href="#">Study Materials</a>
+<a href="#">Bare Acts</a>
+<a href="#">PYQs</a>
+<a href="#">Notes</a>
+<a href="#">Contact</a>
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Justice • Knowledge • Constitution</h1>
 
 <p>
-A free educational platform for LLB students to access previous year question papers,
-notes, and legal study materials from anywhere.
+Premium Judiciary Style Educational Platform for LLB Students,
+Judiciary Aspirants & UPSC Learners.
+Access Constitutional Law Notes, Bare Acts, PYQs & Semester-wise Materials.
 </p>
 
-<div class="author">
+<div class="hero-buttons">
 
-<b>Author:</b> Alok Ranjan <br><br>
+<a href="#" class="btn btn-primary">📚 Study Materials</a>
 
-LLB Student, C.M. Law College, Darbhanga, Bihar <br><br>
-
-A passionate creator and educationist dedicated to helping students through free legal educational resources.
+<a href="#" class="btn btn-outline">⚖ Explore Bare Acts</a>
 
 </div>
 
-</header>
+</div>
 
-<!-- SEARCH BAR -->
+</section>
 
-<div class="search-box">
+<!-- STUDY MATERIALS -->
 
-<input type="text" placeholder="Search question papers, notes, subjects...">
+<section class="section">
+
+<div class="section-title">
+
+<h2>Premium Study Materials</h2>
+
+<p>Curated legal resources for academic excellence</p>
 
 </div>
 
-<!-- TITLE -->
-
-<h2 class="title">LLB Question Papers</h2>
-
-<!-- YEAR CARDS -->
-
-<div class="container">
+<div class="card-grid">
 
 <div class="card">
-
-<h2>First Year</h2>
-
-<p>
-Download previous year question papers and study resources for First Year LLB students.
-</p>
-
-<a href="#" class="btn">Download PDF</a>
-
+<h3>Constitutional Law</h3>
+<p>Important notes, landmark cases, doctrines, amendments and articles.</p>
 </div>
 
 <div class="card">
-
-<h2>Second Year</h2>
-
-<p>
-Important PYQs, notes, and practice materials for Second Year LLB students.
-</p>
-
-<a href="#" class="btn">Download PDF</a>
-
+<h3>Contract Law</h3>
+<p>Essential concepts, agreements, remedies and legal principles.</p>
 </div>
 
 <div class="card">
+<h3>Family Law</h3>
+<p>Marriage, divorce, guardianship, maintenance and succession topics.</p>
+</div>
 
-<h2>Third Year</h2>
-
-<p>
-Final year previous year question papers, notes, and model papers for exam preparation.
-</p>
-
-<a href="#" class="btn">Download PDF</a>
-
+<div class="card">
+<h3>Jurisprudence</h3>
+<p>Schools of law, legal theories and important jurists explained.</p>
 </div>
 
 </div>
 
-<!-- NOTES SECTION -->
+</section>
 
-<div class="notes">
+<!-- SEMESTER / YEAR -->
 
-<h2>Study Materials & Notes</h2>
+<section class="section">
+
+<div class="section-title">
+
+<h2>3-Year LLB Structure</h2>
+
+<p>Year-wise academic materials and notes</p>
+
+</div>
+
+<div class="card-grid">
+
+<div class="year-box">
+
+<h3>📘 First Year</h3>
 
 <ul>
-
-<li>Constitutional Law Notes</li>
-
-<li>Law of Contract Notes</li>
-
-<li>Family Law Notes</li>
-
-<li>Jurisprudence Notes</li>
-
-<li>Criminal Law Notes</li>
-
-<li>Administrative Law Notes</li>
-
-<li>Human Rights Law Notes</li>
-
-<li>Company Law Notes</li>
-
+<li>• Constitutional Law</li>
+<li>• Law of Torts</li>
+<li>• Family Law</li>
+<li>• Contract Law</li>
 </ul>
 
 </div>
 
-<!-- ABOUT SECTION -->
+<div class="year-box">
 
-<div class="about">
+<h3>⚖ Second Year</h3>
 
-<h2>About This Website</h2>
-
-<p>
-
-This platform has been developed purely for educational purposes to help LLB students access free legal educational resources online.
-
-</p>
-
-<br>
-
-<p>
-
-Students can download previous year question papers, study notes, and legal materials to improve exam preparation and academic performance.
-
-</p>
-
-<br>
-
-<p>
-
-The mission of Legal Study Hub is to support law students with accessible and quality educational content without any cost.
-
-</p>
+<ul>
+<li>• IPC / BNS</li>
+<li>• CrPC / BNSS</li>
+<li>• Jurisprudence</li>
+<li>• Administrative Law</li>
+</ul>
 
 </div>
 
-<!-- CONTACT SECTION -->
+<div class="year-box">
 
-<div class="contact">
+<h3>🎓 Third Year</h3>
 
-<h2>Connect With Us</h2>
-
-<p>
-
-Join our educational community for more legal resources and updates.
-
-</p>
-
-<br>
-
-<div class="social-links">
-
-<a href="#">Telegram</a>
-
-<a href="#">WhatsApp</a>
-
-<a href="#">Email</a>
+<ul>
+<li>• CPC</li>
+<li>• Evidence Law</li>
+<li>• Labour Law</li>
+<li>• Drafting & Pleading</li>
+</ul>
 
 </div>
 
 </div>
+
+</section>
+
+<!-- QUOTE -->
+
+<section class="quote">
+
+<h2>
+“Law and Justice are not always the same.”
+</h2>
+
+</section>
 
 <!-- FOOTER -->
 
 <footer>
 
-© 2025 Legal Study Hub | Developed by Alok Ranjan
+<h3>Indian Constitutional Law</h3>
+
+<p>
+Created for Law Students, Judiciary Aspirants & Constitutional Learners
+</p>
+
+<p>
+Author: Alok Ranjan <br>
+CM Law College Darbhanga, Bihar
+</p>
+
+<p style="margin-top:20px;">
+© 2026 All Rights Reserved
+</p>
 
 </footer>
 
